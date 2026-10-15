@@ -6,9 +6,6 @@ import { busStops } from './data/busStops.js'
 
 export default function Home() {
 
-    const [valueFrom, setValueFrom] = useState('')
-    const [valueTo, setValueTo] = useState('')
-    const [middleFilled, setMiddleFilled] = useState(false)
     const [showCollectionMenu, setShowCollectionMenu] = useState(false)
 
     const [buses, setBuses] = useState([
@@ -57,15 +54,6 @@ export default function Home() {
             return stop && normalizeText(stop.name).includes(normalizeText(searchTo))
         })
     )
-
-    useEffect(() => {
-        if (valueFrom && valueTo) {
-            const timer = setTimeout(() => setMiddleFilled(true), 500)
-            return () => clearTimeout(timer)
-        } else {
-            setMiddleFilled(false)
-        }
-    }, [valueFrom, valueTo])
 
     const [theme, setTheme] = useState(() => {
         const saved = localStorage.getItem('theme')
