@@ -59,14 +59,14 @@ export const busLines = [
         ],
     },
     {
-        id: 6, number: '6', name: 'SLATINA - Magistrát města', color: '#06b6d4',
+        id: 6, number: '5Š', name: 'SLATINA - Magistrát města', color: '#06b6d4',
         from: 'SLATINA', to: 'Magistrát města', stops: [12, 6],
         routes: [
             { from: 'SLATINA', to: 'Magistrát města', direction: 'Backward', stopCount: 8 },
         ],
     },
     {
-        id: 7, number: '7', name: 'TERMINÁL HD - SLEZSKÉ PŘ.- CIHELNA', color: '#ec4899',
+        id: 7, number: '6', name: 'TERMINÁL HD - SLEZSKÉ PŘ.- CIHELNA', color: '#ec4899',
         from: 'TERMINÁL HD', to: 'SLEZSKÉ PŘ.- CIHELNA', stops: [1, 8, 17],
         routes: [
             { from: 'TERMINÁL HD', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Backward', stopCount: 11 },
@@ -75,7 +75,7 @@ export const busLines = [
         ],
     },
     {
-        id: 8, number: '8', name: 'TERMINÁL HD - MALŠOVICE - U ČECHŮ', color: '#84cc16',
+        id: 8, number: '7', name: 'TERMINÁL HD - MALŠOVICE - U ČECHŮ', color: '#84cc16',
         from: 'TERMINÁL HD', to: 'MALŠOVICE - U ČECHŮ', stops: [1, 18, 19, 20, 6],
         routes: [
             { from: 'TERMINÁL HD', to: 'MALŠOVICE - U ČECHŮ', direction: 'Backward', stopCount: 11 },
@@ -89,7 +89,7 @@ export const busLines = [
         ],
     },
     {
-        id: 9, number: '9', name: 'MALŠOVICE - U ČECHŮ - TERMINÁL HD', color: '#6366f1',
+        id: 9, number: '8', name: 'MALŠOVICE - U ČECHŮ - TERMINÁL HD', color: '#6366f1',
         from: 'MALŠOVICE - U ČECHŮ', to: 'TERMINÁL HD', stops: [1, 20, 18],
         routes: [
             { from: 'TERMINÁL HD', to: 'MALŠ. - U STŘELNICE', direction: 'Backward', stopCount: 14 },
@@ -99,7 +99,7 @@ export const busLines = [
         ],
     },
     {
-        id: 10, number: '10', name: 'LESNÍ HŘBITOV - Industriální park Plotiště', color: '#14b8a6',
+        id: 10, number: '9', name: 'LESNÍ HŘBITOV - Industriální park Plotiště', color: '#14b8a6',
         from: 'LESNÍ HŘBITOV', to: 'Industriální park Plotiště', stops: [1, 20, 21, 22, 23],
         routes: [
             { from: 'TERMINÁL HD', to: 'MALŠ. - U STŘELNICE', direction: 'Backward', stopCount: 18 },
@@ -114,7 +114,7 @@ export const busLines = [
         ],
     },
     {
-        id: 11, number: '11', name: 'Plotiště škola - TERMINÁL HD', color: '#f97316',
+        id: 11, number: '10', name: 'Plotiště škola - TERMINÁL HD', color: '#f97316',
         from: 'Plotiště škola', to: 'TERMINÁL HD', stops: [24, 1, 25, 26, 22],
         routes: [
             { from: 'Plotiště Říčařova', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 10 },
@@ -129,14 +129,14 @@ export const busLines = [
         ],
     },
     {
-        id: 12, number: '12', name: 'Plotiště škola - Kydlinovská', color: '#a855f7',
+        id: 12, number: '10Š', name: 'Plotiště škola - Kydlinovská', color: '#a855f7',
         from: 'Plotiště škola', to: 'Kydlinovská', stops: [25, 27],
         routes: [
             { from: 'Plotiště škola', to: 'Kydlinovská', direction: 'Backward', stopCount: 8 },
         ],
     },
     {
-        id: 13, number: '13', name: 'PARLAMENT - TERMINÁL HD', color: '#22c55e',
+        id: 13, number: '11', name: 'PARLAMENT - TERMINÁL HD', color: '#22c55e',
         from: 'PARLAMENT', to: 'TERMINÁL HD', stops: [1, 28, 29, 30, 31],
         routes: [
             { from: 'TERMINÁL HD', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 33 },
@@ -148,21 +148,21 @@ export const busLines = [
         ],
     },
     {
-        id: 14, number: '14', name: 'TERMINÁL HD - PARLAMENT', color: '#eab308',
+        id: 14, number: '11R', name: 'TERMINÁL HD - PARLAMENT', color: '#eab308',
         from: 'TERMINÁL HD', to: 'PARLAMENT', stops: [1, 28],
         routes: [
             { from: 'TERMINÁL HD', to: 'PARLAMENT', direction: 'Backward', stopCount: 7 },
         ],
     },
     {
-        id: 15, number: '15', name: 'PARLAMENT - SLEZSKÉ PŘ.- CIHELNA', color: '#0ea5e9',
+        id: 15, number: '11Š', name: 'PARLAMENT - SLEZSKÉ PŘ.- CIHELNA', color: '#0ea5e9',
         from: 'PARLAMENT', to: 'SLEZSKÉ PŘ.- CIHELNA', stops: [28, 8],
         routes: [
             { from: 'PARLAMENT', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Backward', stopCount: 22 },
         ],
     },
     {
-        id: 16, number: '16', name: 'KINGSPAN - BŘEZHRAD', color: '#3b82f6',
+        id: 16, number: '12', name: 'KINGSPAN - BŘEZHRAD', color: '#3b82f6',
         from: 'KINGSPAN', to: 'BŘEZHRAD', stops: [32, 8, 33, 34, 35, 36, 15, 6],
         routes: [
             { from: 'TESCO Březhrad', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Backward', stopCount: 16 },
@@ -187,14 +187,14 @@ export const busLines = [
         ],
     },
     {
-        id: 17, number: '17', name: 'BŘEZHRAD - TERMINÁL HD', color: '#8b5cf6',
+        id: 17, number: '12Š', name: 'BŘEZHRAD - TERMINÁL HD', color: '#8b5cf6',
         from: 'BŘEZHRAD', to: 'TERMINÁL HD', stops: [33, 1],
         routes: [
             { from: 'BŘEZHRAD', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 11 },
         ],
     },
     {
-        id: 18, number: '18', name: 'TERMINÁL HD - RUSEK ŠKOLA', color: '#10b981',
+        id: 18, number: '13', name: 'TERMINÁL HD - RUSEK ŠKOLA', color: '#10b981',
         from: 'TERMINÁL HD', to: 'RUSEK ŠKOLA', stops: [1, 37, 38, 39, 40],
         routes: [
             { from: 'TERMINÁL HD', to: 'RUSEK ŠKOLA', direction: 'Backward', stopCount: 16 },
@@ -210,7 +210,7 @@ export const busLines = [
         ],
     },
     {
-        id: 19, number: '19', name: 'Sídliště Sever - RUSEK ŠKOLA', color: '#f59e0b',
+        id: 19, number: '13R', name: 'Sídliště Sever - RUSEK ŠKOLA', color: '#f59e0b',
         from: 'Sídliště Sever', to: 'RUSEK ŠKOLA', stops: [41, 37],
         routes: [
             { from: 'Sídliště Sever', to: 'RUSEK ŠKOLA', direction: 'Backward', stopCount: 9 },
@@ -218,7 +218,7 @@ export const busLines = [
         ],
     },
     {
-        id: 20, number: '20', name: 'JUNGMANNOVA - SLEZSKÉ PŘ.- CIHELNA', color: '#ef4444',
+        id: 20, number: '14', name: 'JUNGMANNOVA - SLEZSKÉ PŘ.- CIHELNA', color: '#ef4444',
         from: 'JUNGMANNOVA', to: 'SLEZSKÉ PŘ.- CIHELNA', stops: [34, 8, 35, 39],
         routes: [
             { from: 'JUNGMANNOVA', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Backward', stopCount: 21 },
@@ -230,7 +230,7 @@ export const busLines = [
         ],
     },
     {
-        id: 21, number: '21', name: 'Předměřice PANELÁRNA - LOCHENICE', color: '#06b6d4',
+        id: 21, number: '15', name: 'Předměřice PANELÁRNA - LOCHENICE', color: '#06b6d4',
         from: 'Předměřice PANELÁRNA', to: 'LOCHENICE', stops: [42, 43, 26, 44, 36, 1, 45, 16],
         routes: [
             { from: 'Předměřice PANELÁRNA', to: 'Letiště', direction: 'Backward', stopCount: 21 },
@@ -256,14 +256,14 @@ export const busLines = [
         ],
     },
     {
-        id: 22, number: '22', name: 'Plotiště kostel - Pouchov kostel', color: '#ec4899',
+        id: 22, number: '15Š', name: 'Plotiště kostel - Pouchov kostel', color: '#ec4899',
         from: 'Plotiště kostel', to: 'Pouchov kostel', stops: [26, 38],
         routes: [
             { from: 'Plotiště kostel', to: 'Pouchov kostel', direction: 'Backward', stopCount: 17 },
         ],
     },
     {
-        id: 23, number: '23', name: 'STĚŽERY - ROUDNIČKA', color: '#84cc16',
+        id: 23, number: '16', name: 'STĚŽERY - ROUDNIČKA', color: '#84cc16',
         from: 'STĚŽERY', to: 'ROUDNIČKA', stops: [36, 46, 47, 48, 49, 50, 51, 52, 16, 53, 5],
         routes: [
             { from: 'HLAVNÍ NÁDRAŽÍ', to: 'ROUDNIČKA', direction: 'Backward', stopCount: 16 },
@@ -303,14 +303,14 @@ export const busLines = [
         ],
     },
     {
-        id: 24, number: '24', name: 'KOZLOVKA - PODZÁMČÍ', color: '#6366f1',
+        id: 24, number: '16Š', name: 'KOZLOVKA - PODZÁMČÍ', color: '#6366f1',
         from: 'KOZLOVKA', to: 'PODZÁMČÍ', stops: [47, 48],
         routes: [
             { from: 'KOZLOVKA', to: 'PODZÁMČÍ', direction: 'Backward', stopCount: 21 },
         ],
     },
     {
-        id: 25, number: '25', name: 'Úprkova - TERMINÁL HD', color: '#14b8a6',
+        id: 25, number: '17', name: 'Úprkova - TERMINÁL HD', color: '#14b8a6',
         from: 'Úprkova', to: 'TERMINÁL HD', stops: [1, 29, 13, 54, 55, 28, 30, 31],
         routes: [
             { from: 'TERMINÁL HD', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 33 },
@@ -327,14 +327,14 @@ export const busLines = [
         ],
     },
     {
-        id: 26, number: '26', name: 'PARLAMENT - TERMINÁL HD', color: '#f97316',
+        id: 26, number: '17R', name: 'PARLAMENT - TERMINÁL HD', color: '#f97316',
         from: 'PARLAMENT', to: 'TERMINÁL HD', stops: [28, 1],
         routes: [
             { from: 'PARLAMENT', to: 'TERMINÁL HD', direction: 'Forward', stopCount: 6 },
         ],
     },
     {
-        id: 27, number: '27', name: 'PODZÁMČÍ - VYSOKÁ', color: '#a855f7',
+        id: 27, number: '18', name: 'PODZÁMČÍ - VYSOKÁ', color: '#a855f7',
         from: 'PODZÁMČÍ', to: 'VYSOKÁ', stops: [48, 56, 6],
         routes: [
             { from: 'PODZÁMČÍ', to: 'PODZÁMČÍ', direction: 'Backward', stopCount: 18 },
@@ -349,7 +349,7 @@ export const busLines = [
         ],
     },
     {
-        id: 28, number: '28', name: 'PODZÁMČÍ - PARLAMENT', color: '#22c55e',
+        id: 28, number: '18R', name: 'PODZÁMČÍ - PARLAMENT', color: '#22c55e',
         from: 'PODZÁMČÍ', to: 'PARLAMENT', stops: [48, 28],
         routes: [
             { from: 'PODZÁMČÍ', to: 'PARLAMENT', direction: 'Backward', stopCount: 11 },
@@ -357,7 +357,7 @@ export const busLines = [
         ],
     },
     {
-        id: 29, number: '29', name: 'TERMINÁL HD - Magistrát města', color: '#eab308',
+        id: 29, number: '19', name: 'TERMINÁL HD - Magistrát města', color: '#eab308',
         from: 'TERMINÁL HD', to: 'Magistrát města', stops: [57, 8, 58, 17, 1, 6],
         routes: [
             { from: 'FN Pohotovost - Emergency', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Backward', stopCount: 13 },
@@ -369,7 +369,7 @@ export const busLines = [
         ],
     },
     {
-        id: 30, number: '30', name: 'VYSOKÁ - POD STRÁNÍ', color: '#0ea5e9',
+        id: 30, number: '20', name: 'VYSOKÁ - POD STRÁNÍ', color: '#0ea5e9',
         from: 'VYSOKÁ', to: 'POD STRÁNÍ', stops: [56, 48, 11],
         routes: [
             { from: 'VYSOKÁ', to: 'PODZÁMČÍ', direction: 'Backward', stopCount: 4 },
@@ -380,7 +380,7 @@ export const busLines = [
         ],
     },
     {
-        id: 31, number: '31', name: 'Magistrát města - PLACHTA - U PARKU', color: '#3b82f6',
+        id: 31, number: '21', name: 'Magistrát města - PLACHTA - U PARKU', color: '#3b82f6',
         from: 'Magistrát města', to: 'PLACHTA - U PARKU', stops: [6, 59, 5],
         routes: [
             { from: 'Magistrát města', to: 'PLACHTA - U PARKU', direction: 'Backward', stopCount: 6 },
@@ -389,7 +389,7 @@ export const busLines = [
         ],
     },
     {
-        id: 32, number: '32', name: 'BŘEZHRAD - TERMINÁL HD', color: '#8b5cf6',
+        id: 32, number: '22', name: 'BŘEZHRAD - TERMINÁL HD', color: '#8b5cf6',
         from: 'BŘEZHRAD', to: 'TERMINÁL HD', stops: [33, 36, 1, 34, 32],
         routes: [
             { from: 'BŘEZHRAD', to: 'HLAVNÍ NÁDRAŽÍ', direction: 'Backward', stopCount: 2 },
@@ -402,7 +402,7 @@ export const busLines = [
         ],
     },
     {
-        id: 33, number: '33', name: 'KINGSPAN - POD STRÁNÍ', color: '#10b981',
+        id: 33, number: '23', name: 'KINGSPAN - POD STRÁNÍ', color: '#10b981',
         from: 'KINGSPAN', to: 'POD STRÁNÍ', stops: [8, 11, 17, 35],
         routes: [
             { from: 'SLEZSKÉ PŘ.- CIHELNA', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 17 },
@@ -413,14 +413,14 @@ export const busLines = [
         ],
     },
     {
-        id: 34, number: '34', name: 'KLUKY PLANETÁRIUM - SLEZSKÉ PŘ.- CIHELNA', color: '#f59e0b',
+        id: 34, number: '23Š', name: 'KLUKY PLANETÁRIUM - SLEZSKÉ PŘ.- CIHELNA', color: '#f59e0b',
         from: 'KLUKY PLANETÁRIUM', to: 'SLEZSKÉ PŘ.- CIHELNA', stops: [2, 8],
         routes: [
             { from: 'KLUKY PLANETÁRIUM', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Forward', stopCount: 20 },
         ],
     },
     {
-        id: 35, number: '35', name: 'POD STRÁNÍ - TERMINÁL HD', color: '#ef4444',
+        id: 35, number: '24', name: 'POD STRÁNÍ - TERMINÁL HD', color: '#ef4444',
         from: 'POD STRÁNÍ', to: 'TERMINÁL HD', stops: [1, 11],
         routes: [
             { from: 'TERMINÁL HD', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 14 },
@@ -428,7 +428,7 @@ export const busLines = [
         ],
     },
     {
-        id: 36, number: '36', name: 'TERMINÁL HD', color: '#06b6d4',
+        id: 36, number: '24R', name: 'TERMINÁL HD', color: '#06b6d4',
         from: 'TERMINÁL HD', to: '', stops: [1],
         routes: [
             { from: 'TERMINÁL HD', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 10 },
@@ -436,7 +436,7 @@ export const busLines = [
         ],
     },
     {
-        id: 37, number: '37', name: 'Letiště - PODZÁMČÍ', color: '#ec4899',
+        id: 37, number: '25', name: 'Letiště - PODZÁMČÍ', color: '#ec4899',
         from: 'Letiště', to: 'PODZÁMČÍ', stops: [60, 48, 43, 61],
         routes: [
             { from: 'TRUHLÁŘSKÁ', to: 'PODZÁMČÍ', direction: 'Backward', stopCount: 18 },
@@ -448,14 +448,14 @@ export const busLines = [
         ],
     },
     {
-        id: 38, number: '38', name: 'ROUDNIČKA - SLEZSKÉ PŘ.- CIHELNA', color: '#84cc16',
+        id: 38, number: '25Š', name: 'ROUDNIČKA - SLEZSKÉ PŘ.- CIHELNA', color: '#84cc16',
         from: 'ROUDNIČKA', to: 'SLEZSKÉ PŘ.- CIHELNA', stops: [46, 8],
         routes: [
             { from: 'ROUDNIČKA', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Forward', stopCount: 18 },
         ],
     },
     {
-        id: 39, number: '39', name: 'TERMINÁL HD - STĚŽÍRKY', color: '#6366f1',
+        id: 39, number: '26', name: 'TERMINÁL HD - STĚŽÍRKY', color: '#6366f1',
         from: 'TERMINÁL HD', to: 'STĚŽÍRKY', stops: [1, 62],
         routes: [
             { from: 'TERMINÁL HD', to: 'STĚŽÍRKY', direction: 'Backward', stopCount: 8 },
@@ -464,7 +464,7 @@ export const busLines = [
         ],
     },
     {
-        id: 40, number: '40', name: 'SLEZSKÉ PŘ.- CIHELNA - NOVÝ HRADEC KRÁLOVÉ', color: '#14b8a6',
+        id: 40, number: '27', name: 'SLEZSKÉ PŘ.- CIHELNA - NOVÝ HRADEC KRÁLOVÉ', color: '#14b8a6',
         from: 'SLEZSKÉ PŘ.- CIHELNA', to: 'NOVÝ HRADEC KRÁLOVÉ', stops: [8, 11, 3, 17],
         routes: [
             { from: 'SLEZSKÉ PŘ.- CIHELNA', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 14 },
@@ -476,7 +476,7 @@ export const busLines = [
         ],
     },
     {
-        id: 41, number: '41', name: 'POD STRÁNÍ - Pouchov Sokolovna', color: '#f97316',
+        id: 41, number: '27R', name: 'POD STRÁNÍ - Pouchov Sokolovna', color: '#f97316',
         from: 'POD STRÁNÍ', to: 'Pouchov Sokolovna', stops: [11, 63],
         routes: [
             { from: 'POD STRÁNÍ', to: 'Pouchov Sokolovna', direction: 'Forward', stopCount: 12 },
@@ -484,7 +484,7 @@ export const busLines = [
         ],
     },
     {
-        id: 42, number: '42', name: 'Magistrát města - POD STRÁNÍ', color: '#a855f7',
+        id: 42, number: '33', name: 'Magistrát města - POD STRÁNÍ', color: '#a855f7',
         from: 'Magistrát města', to: 'POD STRÁNÍ', stops: [11, 6],
         routes: [
             { from: 'POD STRÁNÍ', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 32 },
@@ -492,7 +492,7 @@ export const busLines = [
         ],
     },
     {
-        id: 43, number: '43', name: 'Dopravní podnik - Dům L', color: '#22c55e',
+        id: 43, number: '51', name: 'Dopravní podnik - Dům L', color: '#22c55e',
         from: 'Dopravní podnik', to: 'Dům L', stops: [16, 64, 10],
         routes: [
             { from: 'Adalbertinum', to: 'Dům L', direction: 'Backward', stopCount: 37 },
@@ -500,14 +500,14 @@ export const busLines = [
         ],
     },
     {
-        id: 44, number: '44', name: 'Dům L - Dopravní podnik', color: '#eab308',
+        id: 44, number: '52', name: 'Dům L - Dopravní podnik', color: '#eab308',
         from: 'Dům L', to: 'Dopravní podnik', stops: [64, 10],
         routes: [
             { from: 'Dům L', to: 'Dopravní podnik', direction: 'Forward', stopCount: 39 },
         ],
     },
     {
-        id: 45, number: '45', name: 'PLAČICE - NOVÝ HRADEC KRÁLOVÉ', color: '#0ea5e9',
+        id: 45, number: '53', name: 'PLAČICE - NOVÝ HRADEC KRÁLOVÉ', color: '#0ea5e9',
         from: 'PLAČICE', to: 'NOVÝ HRADEC KRÁLOVÉ', stops: [9, 3, 36],
         routes: [
             { from: 'PLAČICE', to: 'NOVÝ HRADEC KRÁLOVÉ', direction: 'Backward', stopCount: 22 },
@@ -515,7 +515,7 @@ export const busLines = [
         ],
     },
     {
-        id: 46, number: '46', name: 'Zimní stadion - PLAČICE', color: '#3b82f6',
+        id: 46, number: '54', name: 'Zimní stadion - PLAČICE', color: '#3b82f6',
         from: 'Zimní stadion', to: 'PLAČICE', stops: [5, 9, 3, 36],
         routes: [
             { from: 'Zimní stadion', to: 'PLAČICE', direction: 'Forward', stopCount: 14 },
@@ -523,14 +523,14 @@ export const busLines = [
         ],
     },
     {
-        id: 47, number: '47', name: 'HLAVNÍ NÁDRAŽÍ - TERMINÁL HD', color: '#8b5cf6',
+        id: 47, number: '58', name: 'HLAVNÍ NÁDRAŽÍ - TERMINÁL HD', color: '#8b5cf6',
         from: 'HLAVNÍ NÁDRAŽÍ', to: 'TERMINÁL HD', stops: [36, 1],
         routes: [
             { from: 'HLAVNÍ NÁDRAŽÍ', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 1 },
         ],
     },
     {
-        id: 48, number: '48', name: 'TERMINÁL HD - Letiště', color: '#10b981',
+        id: 48, number: '615', name: 'TERMINÁL HD - Letiště', color: '#10b981',
         from: 'TERMINÁL HD', to: 'Letiště', stops: [1, 43],
         routes: [
             { from: 'TERMINÁL HD', to: 'Letiště', direction: 'Backward', stopCount: 11 },
@@ -538,7 +538,7 @@ export const busLines = [
         ],
     },
     {
-        id: 49, number: '49', name: 'POD STRÁNÍ - Pouchov Sokolovna', color: '#f59e0b',
+        id: 49, number: '666', name: 'POD STRÁNÍ - Pouchov Sokolovna', color: '#f59e0b',
         from: 'POD STRÁNÍ', to: 'Pouchov Sokolovna', stops: [11, 63],
         routes: [
             { from: 'POD STRÁNÍ', to: 'Pouchov Sokolovna', direction: 'Forward', stopCount: 12 },
@@ -546,7 +546,7 @@ export const busLines = [
         ],
     },
     {
-        id: 50, number: '50', name: 'PODZÁMČÍ - PARLAMENT', color: '#ef4444',
+        id: 50, number: '668', name: 'PODZÁMČÍ - PARLAMENT', color: '#ef4444',
         from: 'PODZÁMČÍ', to: 'PARLAMENT', stops: [48, 28],
         routes: [
             { from: 'PODZÁMČÍ', to: 'PARLAMENT', direction: 'Backward', stopCount: 11 },
@@ -554,7 +554,7 @@ export const busLines = [
         ],
     },
     {
-        id: 51, number: '51', name: 'NOVÝ HRADEC KRÁLOVÉ - TERMINÁL HD', color: '#06b6d4',
+        id: 51, number: '802', name: 'NOVÝ HRADEC KRÁLOVÉ - TERMINÁL HD', color: '#06b6d4',
         from: 'NOVÝ HRADEC KRÁLOVÉ', to: 'TERMINÁL HD', stops: [5, 3, 1, 6],
         routes: [
             { from: 'Zimní stadion', to: 'NOVÝ HRADEC KRÁLOVÉ', direction: 'Backward', stopCount: 6 },
@@ -565,7 +565,7 @@ export const busLines = [
         ],
     },
     {
-        id: 52, number: '52', name: 'SLEZSKÉ PŘ.- CIHELNA - PLAČICE', color: '#ec4899',
+        id: 52, number: '803', name: 'SLEZSKÉ PŘ.- CIHELNA - PLAČICE', color: '#ec4899',
         from: 'SLEZSKÉ PŘ.- CIHELNA', to: 'PLAČICE', stops: [9, 8, 7, 10],
         routes: [
             { from: 'PLAČICE', to: 'SLEZSKÉ PŘ.- CIHELNA', direction: 'Backward', stopCount: 21 },
@@ -577,7 +577,7 @@ export const busLines = [
         ],
     },
     {
-        id: 53, number: '53', name: 'TERMINÁL HD - DIVEC', color: '#84cc16',
+        id: 53, number: '805', name: 'TERMINÁL HD - DIVEC', color: '#84cc16',
         from: 'TERMINÁL HD', to: 'DIVEC', stops: [1, 12, 13, 14, 15, 8, 16],
         routes: [
             { from: 'TERMINÁL HD', to: 'SLATINA', direction: 'Backward', stopCount: 17 },
@@ -591,7 +591,7 @@ export const busLines = [
         ],
     },
     {
-        id: 54, number: '54', name: 'TERMINÁL HD - MALŠOVICE - U ČECHŮ', color: '#6366f1',
+        id: 54, number: '807', name: 'TERMINÁL HD - MALŠOVICE - U ČECHŮ', color: '#6366f1',
         from: 'TERMINÁL HD', to: 'MALŠOVICE - U ČECHŮ', stops: [19, 18, 1, 6, 20],
         routes: [
             { from: 'Stará nemocnice', to: 'MALŠOVICE - U ČECHŮ', direction: 'Backward', stopCount: 5 },
@@ -605,7 +605,7 @@ export const busLines = [
         ],
     },
     {
-        id: 55, number: '55', name: 'PARLAMENT - TERMINÁL HD', color: '#14b8a6',
+        id: 55, number: '811', name: 'PARLAMENT - TERMINÁL HD', color: '#14b8a6',
         from: 'PARLAMENT', to: 'TERMINÁL HD', stops: [28, 1, 29, 31, 30],
         routes: [
             { from: 'PARLAMENT', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 19 },
@@ -617,7 +617,7 @@ export const busLines = [
         ],
     },
     {
-        id: 56, number: '56', name: 'TERMINÁL HD - RUSEK ŠKOLA', color: '#f97316',
+        id: 56, number: '813', name: 'TERMINÁL HD - RUSEK ŠKOLA', color: '#f97316',
         from: 'TERMINÁL HD', to: 'RUSEK ŠKOLA', stops: [1, 39, 37, 38, 40],
         routes: [
             { from: 'TERMINÁL HD', to: 'RUSECKÁ', direction: 'Backward', stopCount: 13 },
@@ -633,7 +633,7 @@ export const busLines = [
         ],
     },
     {
-        id: 57, number: '57', name: 'JUNGMANNOVA - SLEZSKÉ PŘ.- CIHELNA', color: '#a855f7',
+        id: 57, number: '814', name: 'JUNGMANNOVA - SLEZSKÉ PŘ.- CIHELNA', color: '#a855f7',
         from: 'JUNGMANNOVA', to: 'SLEZSKÉ PŘ.- CIHELNA', stops: [34, 35, 8, 39],
         routes: [
             { from: 'JUNGMANNOVA', to: 'KINGSPAN', direction: 'Backward', stopCount: 18 },
@@ -645,7 +645,7 @@ export const busLines = [
         ],
     },
     {
-        id: 58, number: '58', name: 'Předměřice PANELÁRNA - LOCHENICE', color: '#22c55e',
+        id: 58, number: '815', name: 'Předměřice PANELÁRNA - LOCHENICE', color: '#22c55e',
         from: 'Předměřice PANELÁRNA', to: 'LOCHENICE', stops: [44, 36, 42, 26, 43, 1, 45, 16],
         routes: [
             { from: 'LOCHENICE', to: 'HLAVNÍ NÁDRAŽÍ', direction: 'Backward', stopCount: 17 },
@@ -671,7 +671,7 @@ export const busLines = [
         ],
     },
     {
-        id: 59, number: '59', name: 'STĚŽERY - ROUDNIČKA', color: '#eab308',
+        id: 59, number: '816', name: 'STĚŽERY - ROUDNIČKA', color: '#eab308',
         from: 'STĚŽERY', to: 'ROUDNIČKA', stops: [49, 46, 47, 36, 51, 48, 50, 52, 5, 16, 53],
         routes: [
             { from: 'STĚŽERY', to: 'ROUDNIČKA', direction: 'Backward', stopCount: 33 },
@@ -712,7 +712,7 @@ export const busLines = [
         ],
     },
     {
-        id: 60, number: '60', name: 'Úprkova - TERMINÁL HD', color: '#0ea5e9',
+        id: 60, number: '817', name: 'Úprkova - TERMINÁL HD', color: '#0ea5e9',
         from: 'Úprkova', to: 'TERMINÁL HD', stops: [54, 1, 55, 28, 29, 31, 30, 13],
         routes: [
             { from: 'SVINARY', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 17 },
@@ -729,7 +729,7 @@ export const busLines = [
         ],
     },
     {
-        id: 61, number: '61', name: 'VYSOKÁ - PODZÁMČÍ', color: '#3b82f6',
+        id: 61, number: '818', name: 'VYSOKÁ - PODZÁMČÍ', color: '#3b82f6',
         from: 'VYSOKÁ', to: 'PODZÁMČÍ', stops: [48, 56, 6],
         routes: [
             { from: 'PODZÁMČÍ', to: 'PODZÁMČÍ', direction: 'Backward', stopCount: 18 },
@@ -743,7 +743,7 @@ export const busLines = [
         ],
     },
     {
-        id: 62, number: '62', name: 'VYSOKÁ - POD STRÁNÍ', color: '#8b5cf6',
+        id: 62, number: '820', name: 'VYSOKÁ - POD STRÁNÍ', color: '#8b5cf6',
         from: 'VYSOKÁ', to: 'POD STRÁNÍ', stops: [56, 11, 48],
         routes: [
             { from: 'VYSOKÁ', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 6 },
@@ -754,7 +754,7 @@ export const busLines = [
         ],
     },
     {
-        id: 63, number: '63', name: 'Letiště - PODZÁMČÍ', color: '#10b981',
+        id: 63, number: '825', name: 'Letiště - PODZÁMČÍ', color: '#10b981',
         from: 'Letiště', to: 'PODZÁMČÍ', stops: [43, 48, 60, 61],
         routes: [
             { from: 'Letiště', to: 'PODZÁMČÍ', direction: 'Backward', stopCount: 21 },
@@ -766,7 +766,7 @@ export const busLines = [
         ],
     },
     {
-        id: 64, number: '64', name: 'SLEZSKÉ PŘ.- CIHELNA - NOVÝ HRADEC KRÁLOVÉ', color: '#f59e0b',
+        id: 64, number: '827', name: 'SLEZSKÉ PŘ.- CIHELNA - NOVÝ HRADEC KRÁLOVÉ', color: '#f59e0b',
         from: 'SLEZSKÉ PŘ.- CIHELNA', to: 'NOVÝ HRADEC KRÁLOVÉ', stops: [8, 11, 17, 3],
         routes: [
             { from: 'SLEZSKÉ PŘ.- CIHELNA', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 14 },
@@ -779,7 +779,7 @@ export const busLines = [
         ],
     },
     {
-        id: 65, number: '65', name: 'Magistrát města - POD STRÁNÍ', color: '#ef4444',
+        id: 65, number: '833', name: 'Magistrát města - POD STRÁNÍ', color: '#ef4444',
         from: 'Magistrát města', to: 'POD STRÁNÍ', stops: [11, 6],
         routes: [
             { from: 'POD STRÁNÍ', to: 'POD STRÁNÍ', direction: 'Backward', stopCount: 32 },
@@ -787,7 +787,7 @@ export const busLines = [
         ],
     },
     {
-        id: 66, number: '66', name: 'Dopravní podnik - Dům L', color: '#06b6d4',
+        id: 66, number: '851', name: 'Dopravní podnik - Dům L', color: '#06b6d4',
         from: 'Dopravní podnik', to: 'Dům L', stops: [16, 64, 10],
         routes: [
             { from: 'Adalbertinum', to: 'Dům L', direction: 'Backward', stopCount: 39 },
@@ -795,7 +795,7 @@ export const busLines = [
         ],
     },
     {
-        id: 67, number: '67', name: 'TERMINÁL HD - DIVEC', color: '#ec4899',
+        id: 67, number: '855', name: 'TERMINÁL HD - DIVEC', color: '#ec4899',
         from: 'TERMINÁL HD', to: 'DIVEC', stops: [1, 28, 12, 13, 14, 15, 8, 16],
         routes: [
             { from: 'TERMINÁL HD', to: 'PARLAMENT', direction: 'Backward', stopCount: 13 },
@@ -810,7 +810,7 @@ export const busLines = [
         ],
     },
     {
-        id: 68, number: '68', name: 'THV', color: '#84cc16',
+        id: 68, number: '889', name: 'THV', color: '#84cc16',
         from: 'THV', to: '', stops: [53],
         routes: [
             { from: 'Muzeum', to: 'Muzeum', direction: 'Backward', stopCount: 2 },
@@ -818,7 +818,7 @@ export const busLines = [
         ],
     },
     {
-        id: 69, number: '69', name: 'RFP', color: '#6366f1',
+        id: 69, number: '901', name: 'RFP', color: '#6366f1',
         from: 'RFP', to: '', stops: [1],
         routes: [
             { from: 'TERMINÁL HD', to: '', direction: 'Backward', stopCount: 3 },
@@ -826,7 +826,7 @@ export const busLines = [
         ],
     },
     {
-        id: 70, number: '70', name: 'Letiště - TERMINÁL HD', color: '#14b8a6',
+        id: 70, number: '902', name: 'Letiště - TERMINÁL HD', color: '#14b8a6',
         from: 'Letiště', to: 'TERMINÁL HD', stops: [1, 43],
         routes: [
             { from: 'TERMINÁL HD', to: 'Letiště', direction: 'Backward', stopCount: 6 },
@@ -834,7 +834,7 @@ export const busLines = [
         ],
     },
     {
-        id: 71, number: '71', name: 'TERMINÁL HD - Letiště', color: '#f97316',
+        id: 71, number: '903', name: 'TERMINÁL HD - Letiště', color: '#f97316',
         from: 'TERMINÁL HD', to: 'Letiště', stops: [1, 43],
         routes: [
             { from: 'TERMINÁL HD', to: 'Letiště', direction: 'Backward', stopCount: 4 },
@@ -842,7 +842,7 @@ export const busLines = [
         ],
     },
     {
-        id: 72, number: '72', name: 'PARLAMENT - TERMINÁL HD', color: '#a855f7',
+        id: 72, number: '911', name: 'PARLAMENT - TERMINÁL HD', color: '#a855f7',
         from: 'PARLAMENT', to: 'TERMINÁL HD', stops: [28, 1, 29, 31, 30],
         routes: [
             { from: 'PARLAMENT', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 19 },
@@ -854,7 +854,7 @@ export const busLines = [
         ],
     },
     {
-        id: 73, number: '73', name: 'Předměřice PANELÁRNA - LOCHENICE', color: '#22c55e',
+        id: 73, number: '915', name: 'Předměřice PANELÁRNA - LOCHENICE', color: '#22c55e',
         from: 'Předměřice PANELÁRNA', to: 'LOCHENICE', stops: [44, 36, 42, 26, 43, 1, 45, 16],
         routes: [
             { from: 'LOCHENICE', to: 'HLAVNÍ NÁDRAŽÍ', direction: 'Backward', stopCount: 17 },
@@ -882,7 +882,7 @@ export const busLines = [
         ],
     },
     {
-        id: 74, number: '74', name: 'KLUKY PLANETÁRIUM - TERMINÁL HD', color: '#eab308',
+        id: 74, number: '916', name: 'KLUKY PLANETÁRIUM - TERMINÁL HD', color: '#eab308',
         from: 'KLUKY PLANETÁRIUM', to: 'TERMINÁL HD', stops: [1, 2],
         routes: [
             { from: 'TERMINÁL HD', to: 'KLUKY PLANETÁRIUM', direction: 'Backward', stopCount: 14 },
@@ -890,21 +890,21 @@ export const busLines = [
         ],
     },
     {
-        id: 75, number: '75', name: 'Dopravní podnik - TERMINÁL HD', color: '#0ea5e9',
+        id: 75, number: '930', name: 'Dopravní podnik - TERMINÁL HD', color: '#0ea5e9',
         from: 'Dopravní podnik', to: 'TERMINÁL HD', stops: [10, 1],
         routes: [
             { from: 'Dopravní podnik', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 1 },
         ],
     },
     {
-        id: 76, number: '76', name: 'SOR', color: '#3b82f6',
+        id: 76, number: '950', name: 'SOR', color: '#3b82f6',
         from: 'SOR', to: '', stops: [1],
         routes: [
             { from: 'TERMINÁL HD', to: '', direction: 'Backward', stopCount: 5 },
         ],
     },
     {
-        id: 77, number: '77', name: 'Klicperovo divadlo', color: '#8b5cf6',
+        id: 77, number: '960', name: 'Klicperovo divadlo', color: '#8b5cf6',
         from: 'Klicperovo divadlo', to: '', stops: [64],
         routes: [
             { from: 'Dům L', to: '', direction: 'Backward', stopCount: 33 },
@@ -912,7 +912,7 @@ export const busLines = [
         ],
     },
     {
-        id: 78, number: '78', name: 'HLAVNÍ NÁDRAŽÍ - Slezské Př.- nádraží', color: '#10b981',
+        id: 78, number: '961', name: 'HLAVNÍ NÁDRAŽÍ - Slezské Př.- nádraží', color: '#10b981',
         from: 'HLAVNÍ NÁDRAŽÍ', to: 'Slezské Př.- nádraží', stops: [36, 65, 66],
         routes: [
             { from: 'HLAVNÍ NÁDRAŽÍ', to: 'Slezské Př.- nádraží', direction: 'Backward', stopCount: 1 },
@@ -921,7 +921,7 @@ export const busLines = [
         ],
     },
     {
-        id: 79, number: '79', name: 'Dožínky', color: '#f59e0b',
+        id: 79, number: 'D', name: 'Dožínky', color: '#f59e0b',
         from: 'Dožínky', to: '', stops: [36],
         routes: [
             { from: 'HLAVNÍ NÁDRAŽÍ', to: '', direction: 'Backward', stopCount: 3 },
@@ -929,14 +929,14 @@ export const busLines = [
         ],
     },
     {
-        id: 80, number: '80', name: 'Majales', color: '#ef4444',
+        id: 80, number: 'M', name: 'Majales', color: '#ef4444',
         from: 'Majales', to: '', stops: [67],
         routes: [
             { from: 'Šimkovy sady', to: 'Šimkovy sady', direction: 'Backward', stopCount: 2 },
         ],
     },
     {
-        id: 81, number: '81', name: 'NOVÝ HRADEC KRÁLOVÉ - PLAČICE', color: '#06b6d4',
+        id: 81, number: 'N1', name: 'NOVÝ HRADEC KRÁLOVÉ - PLAČICE', color: '#06b6d4',
         from: 'NOVÝ HRADEC KRÁLOVÉ', to: 'PLAČICE', stops: [3, 9, 16],
         routes: [
             { from: 'NOVÝ HRADEC KRÁLOVÉ', to: 'PLAČICE', direction: 'Backward', stopCount: 24 },
@@ -946,7 +946,7 @@ export const busLines = [
         ],
     },
     {
-        id: 82, number: '82', name: 'PODZÁMČÍ - TRUHLÁŘSKÁ', color: '#ec4899',
+        id: 82, number: 'N2', name: 'PODZÁMČÍ - TRUHLÁŘSKÁ', color: '#ec4899',
         from: 'PODZÁMČÍ', to: 'TRUHLÁŘSKÁ', stops: [16, 60, 48],
         routes: [
             { from: 'Adalbertinum', to: 'TRUHLÁŘSKÁ', direction: 'Backward', stopCount: 12 },
@@ -956,7 +956,7 @@ export const busLines = [
         ],
     },
     {
-        id: 83, number: '83', name: 'Noc vědy', color: '#84cc16',
+        id: 83, number: 'NV', name: 'Noc vědy', color: '#84cc16',
         from: 'Noc vědy', to: '', stops: [1],
         routes: [
             { from: 'TERMINÁL HD', to: 'TERMINÁL HD', direction: 'Backward', stopCount: 37 },

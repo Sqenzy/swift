@@ -15,11 +15,6 @@ const source = JSON.parse(readFileSync(new URL('data-src/dpmhk-lines.json', root
 const EXCLUDED_LINES = new Set(['Přejezd', '999999', '908', '999'])
 const DEPOT = '# vozovny #'
 
-const COLORS = [
-    '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#ec4899', '#84cc16',
-    '#6366f1', '#14b8a6', '#f97316', '#a855f7', '#22c55e', '#eab308', '#0ea5e9',
-]
-
 const cleanStop = (name) => name.replace(/\s+/g, ' ').trim()
 const isStop = (name) => name !== '' && name !== DEPOT
 
@@ -75,7 +70,6 @@ const lines = source.lines
             name: to ? `${from} - ${to}` : from,
             from,
             to,
-            color: COLORS[i % COLORS.length],
             stops: [...new Set(ends.map(stopId))],
             routes,
         }
@@ -89,7 +83,7 @@ const routeJs = (r) =>
 
 writeFileSync(new URL('src/data/busLines.js', root), header + 'export const busLines = [\n' + lines.map(l =>
     `    {\n` +
-    `        id: ${l.id}, number: ${q(l.number)}, name: ${q(l.name)}, color: ${q(l.color)},\n` +
+    `        id: ${l.id}, number: ${q(l.number)}, name: ${q(l.name)},\n` +
     `        from: ${q(l.from)}, to: ${q(l.to)}, stops: [${l.stops.join(', ')}],\n` +
     `        routes: [\n${l.routes.map(r => `            ${routeJs(r)},`).join('\n')}\n        ],\n` +
     `    },`
