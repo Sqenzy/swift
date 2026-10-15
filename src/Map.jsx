@@ -18,44 +18,6 @@ export default function BusMap() {
     const pollIntervalRef = useRef(null);
     const [darkMode, setDarkMode] = useState(false);
 
-    // Initialize map once
-    useEffect(() => {
-        maptilersdk.config.apiKey = MAPTILER_API_KEY;
-
-        const map = new maptilersdk.Map({
-            container: mapContainerRef.current,
-            center: [15.78, 50.03],
-            zoom: 14,
-        });
-
-        mapRef.current = map;
-
-        map.addControl(new maptilersdk.GeolocateControl(), "top-right");
-
-        map.on("style.load", () => {
-            addBusLayer(map);
-        });
-
-        updateBuses();
-        pollIntervalRef.current = setInterval(updateBuses, 5000);
-        animationFrameRef.current = requestAnimationFrame((t) =>
-            animateBuses(t, map)
-        );
-
-        return () => {
-            clearInterval(pollIntervalRef.current);
-            cancelAnimationFrame(animationFrameRef.current);
-            map.remove();
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    // Toggle style when darkMode changes
-    useEffect(() => {
-        if (!mapRef.current) return;
-        mapRef.current.setStyle(darkMode ? DARK_STYLE : NORMAL_STYLE);
-    }, [darkMode]);
-
     function addBusLayer(map) {
         map.loadImage("Symbols/busIcon.png").then((result) => {
             if (!map.hasImage("bus")) {
@@ -186,6 +148,44 @@ export default function BusMap() {
             animateBuses(t, map)
         );
     }
+
+    // Initialize map once
+    useEffect(() => {
+        maptilersdk.config.apiKey = MAPTILER_API_KEY;
+
+        const map = new maptilersdk.Map({
+            container: mapContainerRef.current,
+            center: [15.78, 50.03],
+            zoom: 14,
+        });
+
+        mapRef.current = map;
+
+        map.addControl(new maptilersdk.GeolocateControl(), "top-right");
+
+        map.on("style.load", () => {
+            addBusLayer(map);
+        });
+
+        updateBuses();
+        pollIntervalRef.current = setInterval(updateBuses, 5000);
+        animationFrameRef.current = requestAnimationFrame((t) =>
+            animateBuses(t, map)
+        );
+
+        return () => {
+            clearInterval(pollIntervalRef.current);
+            cancelAnimationFrame(animationFrameRef.current);
+            map.remove();
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Toggle style when darkMode changes
+    useEffect(() => {
+        if (!mapRef.current) return;
+        mapRef.current.setStyle(darkMode ? DARK_STYLE : NORMAL_STYLE);
+    }, [darkMode]);
 
     return (
         <div style={{ position: "relative", width: "100%", height: "100vh" }}>
