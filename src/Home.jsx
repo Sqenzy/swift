@@ -1,9 +1,6 @@
 import {useState, useEffect} from 'react'
 import './Home.css'
 import BusMap from "./Map.jsx"
-import { busLines } from './data/busLines.js'
-import { busStops } from './data/busStops.js'
-import { busLines } from './data/busLines.js'
 
 // Line colour palette; lines cycle through it in order. `text` is the colour of
 // the line number on top of it (dark on the light colours so it stays readable).
