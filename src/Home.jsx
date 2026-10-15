@@ -122,41 +122,10 @@ export default function Home() {
 
     return (
         <>
-            <header className="header">
-                <div className="title">
-                    <p className="name">Trasa</p>
-                </div>
-                <div className="selection">
-                    <button className="del" onClick={() => setValueFrom('')}><img src="close.png"></img></button>
-                    <div className="select-wrapper">
-                        <div className="select-current">{valueFrom || "Vyberte zastavku"}</div>
-                        <div className="select-options">
-                            <button onClick={() => setValueFrom('Hlavni Nadrazi')}>Hlavni Nadrazi</button>
-                            <button onClick={() => setValueFrom('Polabiny')}>Polabiny</button>
-                            <button onClick={() => setValueFrom('Pardubicky')}>Pardubicky</button>
-                        </div>
-                    </div>
-                    <div className="separator">
-                        <div className={valueFrom ? "dot filled" : "dot"} id="dot1"></div>
-                        <div className={middleFilled ? "dot filled pulse" : "dot"} id="dot2"></div>
-                        <div className={valueTo ? "dot filled" : "dot"} id="dot3"></div>
-                    </div>
-                    <div className="select-wrapper">
-                        <div className="select-current">{valueTo || "Vyberte zastavku"}</div>
-                        <div className="select-options">
-                            <button onClick={() => setValueTo('Hlavni Nadrazi')}>Hlavni Nadrazi</button>
-                            <button onClick={() => setValueTo('Polabiny')}>Polabiny</button>
-                            <button onClick={() => setValueTo('Pardubicky')}>Pardubicky</button>
-                        </div>
-                    </div>
-                    <button className="del" id="second" onClick={() => setValueTo('')}><img src="close.png"></img></button>
-                </div>
-            </header>
             <section className="sidebar">
                 <div className="sidebar-header">
                     <div className="sidebar-brand">
                         <p className="name">Linky</p>
-                        <span className="sidebar-count">{busLines.length}</span>
                     </div>
                     <button className="changemode"
                             onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
@@ -207,7 +176,7 @@ export default function Home() {
                         className={`line-tab ${lineFilter === 'all' ? 'active' : ''}`}
                         onClick={() => setLineFilter('all')}
                     >
-                        Vše <span className="tab-count">{busLines.length}</span>
+                        Vše <span className="tab-count"></span>
                     </button>
                     <button
                         role="tab"
@@ -215,7 +184,7 @@ export default function Home() {
                         className={`line-tab ${lineFilter === 'favorites' ? 'active' : ''}`}
                         onClick={() => setLineFilter('favorites')}
                     >
-                        Oblíbené <span className="tab-count">{favorites.length}</span>
+                        Oblíbené <span className="tab-count"></span>
                     </button>
                 </div>
 

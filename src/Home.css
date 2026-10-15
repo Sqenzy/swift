@@ -944,7 +944,7 @@
     bottom: 0;
     right: 0;
     width: 80vw;
-    height: calc(100vh - 60px);
+    height: 100vh;
     background: var(--bg-map);
     z-index: 0;
     transition: background 0.3s ease;
