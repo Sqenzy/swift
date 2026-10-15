@@ -17,12 +17,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## Bus data
 
-`src/data/busLines.js` and `src/data/busStops.js` are generated from the
-DPmHK (Hradec Králové city transport) line list in `data-src/dpmhk-lines.json`.
+Bus lines and stops are built when the app loads (`src/data/dpmhk.js`) from the
+DPmHK (Hradec Králové city transport) line list in `src/data/dpmhk-lines.json`.
 Depot transfers, ticket pre-sale and test lines are left out. The source only
 gives each route's start and end stop, so a line's stops are its route ends.
-To regenerate after replacing the JSON with a newer export:
-
-```sh
-node scripts/build-bus-data.mjs
-```
+To update the data, replace `src/data/dpmhk-lines.json` with a newer export.
