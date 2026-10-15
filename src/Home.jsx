@@ -198,7 +198,8 @@ export default function Home() {
                     ) : (
                         <ul className="lines">
                             {visibleLines.map(line => {
-                                const [origin, destination] = line.name.split(' - ')
+                                const origin = line.from
+                                const destination = line.to
                                 const isFavorite = favorites.includes(line.id)
                                 return (
                                     <li

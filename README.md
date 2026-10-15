@@ -18,9 +18,10 @@ If you are developing a production application, we recommend using TypeScript wi
 ## Bus data
 
 `src/data/busLines.js` and `src/data/busStops.js` are generated from the
-[Autobusové linky VDKHK](https://www.datakhk.cz/datasets/ebc0da36c2bd4fdb9505ddab8b789007_7/)
-CSV export (saved in `data-src/`), the regional bus lines of the Hradec Králové Region.
-To regenerate after downloading a newer export:
+DPmHK (Hradec Králové city transport) line list in `data-src/dpmhk-lines.json`.
+Depot transfers, ticket pre-sale and test lines are left out. The source only
+gives each route's start and end stop, so a line's stops are its route ends.
+To regenerate after replacing the JSON with a newer export:
 
 ```sh
 node scripts/build-bus-data.mjs
