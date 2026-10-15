@@ -4,6 +4,21 @@ import BusMap from "./Map.jsx"
 import { busLines } from './data/busLines.js'
 import { busStops } from './data/busStops.js'
 
+// Line colour palette; lines cycle through it in order. `text` is the colour of
+// the line number on top of it (dark on the light colours so it stays readable).
+const LINE_COLORS = [
+    { color: '#ff595e', text: '#ffffff' }, // vibrant coral
+    { color: '#ffca3a', text: '#1f1f1f' }, // golden pollen
+    { color: '#8ac926', text: '#1f1f1f' }, // yellow green
+    { color: '#1982c4', text: '#ffffff' }, // steel blue
+    { color: '#6a4c93', text: '#ffffff' }, // dusty grape
+]
+
+const lineColorStyle = (line) => {
+    const { color, text } = LINE_COLORS[(line.id - 1) % LINE_COLORS.length]
+    return { '--line-color': color, '--line-text-color': text }
+}
+
 export default function Home() {
 
     const [showCollectionMenu, setShowCollectionMenu] = useState(false)
@@ -193,7 +208,7 @@ export default function Home() {
                                     <li
                                         key={line.id}
                                         className={`line ${selectedLine === line.id ? 'active' : ''}`}
-                                        style={{ '--line-color': line.color, '--line-text-color': line.textColor }}
+                                        style={lineColorStyle(line)}
                                     >
                                         <button className="line-select" onClick={() => setSelectedLine(line.id)}>
                                             <span className="line-badge">{line.number}</span>
@@ -330,7 +345,7 @@ function StopSearch({ placeholder, value, onChange, open, setOpen, stops, lines,
                                         pick(line.name)
                                         onPickLine(line.id)
                                     }}
-                                    style={{ '--line-color': line.color, '--line-text-color': line.textColor }}
+                                    style={lineColorStyle(line)}
                                 >
                                     <span className="result-line-number">{line.number}</span>
                                     <span className="result-line-name">{line.name}</span>

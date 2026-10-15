@@ -15,22 +15,6 @@ const source = JSON.parse(readFileSync(new URL('data-src/dpmhk-lines.json', root
 const EXCLUDED_LINES = new Set(['Přejezd', '999999', '908', '999'])
 const DEPOT = '# vozovny #'
 
-const COLORS = [
-    '#ff595e', // vibrant coral
-    '#ffca3a', // golden pollen
-    '#8ac926', // yellow green
-    '#1982c4', // steel blue
-    '#6a4c93', // dusty grape
-]
-
-// Dark text on light line colours, white on dark ones
-function textColor(hex) {
-    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
-        .map(c => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
-    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
-    return luminance > 0.4 ? '#1f1f1f' : '#ffffff'
-}
-
 const cleanStop = (name) => name.replace(/\s+/g, ' ').trim()
 const isStop = (name) => name !== '' && name !== DEPOT
 
@@ -86,8 +70,6 @@ const lines = source.lines
             name: to ? `${from} - ${to}` : from,
             from,
             to,
-            color: COLORS[i % COLORS.length],
-            textColor: textColor(COLORS[i % COLORS.length]),
             stops: [...new Set(ends.map(stopId))],
             routes,
         }
@@ -101,7 +83,7 @@ const routeJs = (r) =>
 
 writeFileSync(new URL('src/data/busLines.js', root), header + 'export const busLines = [\n' + lines.map(l =>
     `    {\n` +
-    `        id: ${l.id}, number: ${q(l.number)}, name: ${q(l.name)}, color: ${q(l.color)}, textColor: ${q(l.textColor)},\n` +
+    `        id: ${l.id}, number: ${q(l.number)}, name: ${q(l.name)},\n` +
     `        from: ${q(l.from)}, to: ${q(l.to)}, stops: [${l.stops.join(', ')}],\n` +
     `        routes: [\n${l.routes.map(r => `            ${routeJs(r)},`).join('\n')}\n        ],\n` +
     `    },`
