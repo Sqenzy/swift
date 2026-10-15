@@ -1,14 +1,10 @@
 import {useState, useEffect} from 'react'
 import './Home.css'
 import BusMap from "./Map.jsx"
-import { busLines } from './data/busLines.js'
 import { busStops } from './data/busStops.js'
 
 export default function Home() {
 
-    const [valueFrom, setValueFrom] = useState('')
-    const [valueTo, setValueTo] = useState('')
-    const [middleFilled, setMiddleFilled] = useState(false)
     const [showCollectionMenu, setShowCollectionMenu] = useState(false)
 
     const [buses, setBuses] = useState([
@@ -27,11 +23,6 @@ export default function Home() {
     const [showToResults, setShowToResults] = useState(false)
     const [lineFilter, setLineFilter] = useState('all')
 
-    const displayedBusLines = busLines.slice(0, 27).map((line, index) => ({
-        ...line,
-        number: String(index + 1),
-    }))
-
     const normalizeText = (text) => {
         return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     }
@@ -44,28 +35,6 @@ export default function Home() {
         normalizeText(stop.name).includes(normalizeText(searchTo))
     )
 
-    const filteredFromLines = displayedBusLines.filter(line =>
-        line.stops.some(stopId => {
-            const stop = busStops.find(s => s.id === stopId)
-            return stop && normalizeText(stop.name).includes(normalizeText(searchFrom))
-        })
-    )
-
-    const filteredToLines = displayedBusLines.filter(line =>
-        line.stops.some(stopId => {
-            const stop = busStops.find(s => s.id === stopId)
-            return stop && normalizeText(stop.name).includes(normalizeText(searchTo))
-        })
-    )
-
-    useEffect(() => {
-        if (valueFrom && valueTo) {
-            const timer = setTimeout(() => setMiddleFilled(true), 500)
-            return () => clearTimeout(timer)
-        } else {
-            setMiddleFilled(false)
-        }
-    }, [valueFrom, valueTo])
 
     const [theme, setTheme] = useState(() => {
         const saved = localStorage.getItem('theme')
@@ -103,18 +72,6 @@ export default function Home() {
                 : [...prev, lineId]
         )
     }
-
-    const sortedBusLines = [...displayedBusLines].sort((a, b) => {
-        const aFav = favorites.includes(a.id)
-        const bFav = favorites.includes(b.id)
-        if (aFav && !bFav) return -1
-        if (!aFav && bFav) return 1
-        return a.id - b.id
-    })
-
-    const visibleLines = lineFilter === 'favorites'
-        ? sortedBusLines.filter(line => favorites.includes(line.id))
-        : sortedBusLines
 
     const unlockedCount = buses.filter(bus => bus.unlocked).length
 
@@ -163,7 +120,6 @@ export default function Home() {
                             open={showToResults}
                             setOpen={setShowToResults}
                             stops={filteredToStops}
-                            lines={filteredToLines}
                             onPickLine={setSelectedLine}
                         />
                     </div>
@@ -203,7 +159,8 @@ export default function Home() {
                     ) : (
                         <ul className="lines">
                             {visibleLines.map(line => {
-                                const [origin, destination] = line.name.split(' - ')
+                                const origin = line.from
+                                const destination = line.to
                                 const isFavorite = favorites.includes(line.id)
                                 return (
                                     <li
