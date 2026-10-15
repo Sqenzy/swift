@@ -6,39 +6,65 @@
 //
 // The export only lists each line's route as a dash-separated list of places
 // (no stop coordinates), so stops are the places named in those routes.
+// Rows without a route are skipped.
 
 import { readFileSync, writeFileSync } from 'node:fs'
 
 const root = new URL('../', import.meta.url)
 const csvPath = new URL('data-src/autobusove-linky-vdkhk.csv', root)
 
-// Only keep lines that serve Hradec Králové
-const CITY = 'Hradec Králové'
-
-// The source abbreviates place names inconsistently; map them to full names
-const PLACE_NAMES = {
+// The source abbreviates place names inconsistently ("Kostelec n.O.",
+// "Kostelec n.Orl.", "Kostelec .Orl.", ...); expand them to full names so
+// shared stops are deduplicated. Rules apply to each comma-separated part.
+const WHOLE_NAMES = {
     'H.Králové': 'Hradec Králové',
     'Hr.Králové': 'Hradec Králové',
-    'Dvůr Králové n.L.': 'Dvůr Králové nad Labem',
-    'Dvůr Králové n. L.': 'Dvůr Králové nad Labem',
-    'Dvůr Králové n.Lab.': 'Dvůr Králové nad Labem',
-    'N.Město n.Met.': 'Nové Město nad Metují',
-    'Nové Město n.Met.': 'Nové Město nad Metují',
-    'Třebechovice p.Oreb.': 'Třebechovice pod Orebem',
-    'Č.Meziříčí': 'České Meziříčí',
-    'Pec p. Sněž.': 'Pec pod Sněžkou',
-    'Pec p.Sněžkou': 'Pec pod Sněžkou',
-    'Chlumec n.Cidl.': 'Chlumec nad Cidlinou',
-    'Kostelec n.O.': 'Kostelec nad Orlicí',
     'Kostelec .Orl.': 'Kostelec nad Orlicí',
-    'Rychnov n.Kn.': 'Rychnov nad Kněžnou',
-    'Týniště n.O.': 'Týniště nad Orlicí',
-    'Deštné v Orl.h.': 'Deštné v Orlických horách',
-    'Deštné v Orl.h.,Šerlich': 'Deštné v Orlických horách, Šerlich',
-    'Svoboda n.Úpou': 'Svoboda nad Úpou',
-    'Vysoká n.L.': 'Vysoká nad Labem',
-    'Rokytnice n.Jiz.': 'Rokytnice nad Jizerou',
-    'Špindlerův Mlýn,Špindlerovka': 'Špindlerův Mlýn, Špindlerovka',
+    // MHD Náchod stops
+    'aut.st.': 'Náchod, autobusové stanoviště',
+    'St.Město': 'Náchod, Staré Město',
+}
+
+const PREFIXES = [
+    [/^N\.\s*Město/, 'Nové Město'],
+    [/^N\.\s*Hrádek/, 'Nový Hrádek'],
+    [/^Č\.\s*Meziříčí/, 'České Meziříčí'],
+    [/^Č\.\s*Skalice/, 'Česká Skalice'],
+    [/^Č\.\s*Čermná/, 'Česká Čermná'],
+    [/^Kost\.\s*Lhota/, 'Kostelecká Lhota'],
+    [/^Král\.\s*Lhota/, 'Králova Lhota'],
+    [/^Hor\.\s*Malá Úpa/, 'Horní Malá Úpa'],
+    [/^sídl\.\s*/, 'Sídliště '],
+]
+
+const SUFFIXES = [
+    [/ n\.\s*O(rl)?\.?$/, ' nad Orlicí'],
+    [/ v (O|Orl)\.\s*h\.$| v Orlh\.$/, ' v Orlických horách'],
+    [/ n\.\s*L(ab)?\.$/, ' nad Labem'],
+    [/ n\.\s*M(et)?\.$/, ' nad Metují'],
+    [/ n\.\s*Jiz\.$/, ' nad Jizerou'],
+    [/ n\.\s*Nisou$/, ' nad Nisou'],
+    [/ n\.\s*Cidl\.?$/, ' nad Cidlinou'],
+    [/ n\.\s*K(n|něž)?\.$/, ' nad Kněžnou'],
+    [/ n\.\s*Zd(ob)?\.$/, ' nad Zdobnicí'],
+    [/ n\.\s*B(ělou|\.)$/, ' nad Bělou'],
+    [/ n\.\s*Úpou$/, ' nad Úpou'],
+    [/ n\.\s*Pop\.$/, ' nad Popelkou'],
+    [/ n\.\s*Bystř\.$/, ' nad Bystřicí'],
+    [/ p\.\s*Oreb\.$/, ' pod Orebem'],
+    [/ p\.\s*Sněž(kou|\.)$/, ' pod Sněžkou'],
+    [/ p\.\s*Tr\.$/, ' pod Troskami'],
+    [/ p\.\s*Hořičkami$/, ' pod Hořičkami'],
+    [/ v Krk\.$/, ' v Krkonoších'],
+    [/ u St\.\s*Paky$/, ' u Staré Paky'],
+]
+
+function placeName(raw) {
+    return raw.split(/\s*,\s*/).map(part => {
+        if (WHOLE_NAMES[part]) return WHOLE_NAMES[part]
+        for (const [re, full] of [...PREFIXES, ...SUFFIXES]) part = part.replace(re, full)
+        return part
+    }).join(', ')
 }
 
 const COLORS = [
@@ -70,22 +96,24 @@ function parseCsv(text) {
 
 function routePlaces(trasa) {
     // drop prefixes like "Turistický autobus s přepravou kol (baťoh): "
-    const route = trasa.includes(': ') ? trasa.slice(trasa.lastIndexOf(': ') + 2) : trasa
+    // and suffixes like " a zpět (MHD Rychnov n. Kněž.)"
+    const route = (trasa.includes(': ') ? trasa.slice(trasa.lastIndexOf(': ') + 2) : trasa)
+        .replace(/\s+a zpět\s*\(.*\)$/, '')
     return route
         .split(/\s*[-–]\s*/)
         .flatMap(part => part.split(/\s*\/\s*/)) // "A / B" marks alternative branches
         .map(part => part.trim())
         .filter(Boolean)
-        .map(part => PLACE_NAMES[part] ?? part)
+        .map(placeName)
 }
 
 const records = parseCsv(readFileSync(csvPath, 'utf8'))
     .map(r => ({
-        number: r.linka.replace(/^IDOL\s+/, '').trim(),
+        number: r.linka.replace(/^(IDOL|PID)\s*/, '').trim(),
         places: routePlaces(r.trasa),
         timetable: r.jizd_rad,
     }))
-    .filter(r => r.places.includes(CITY))
+    .filter(r => r.places.length > 1)
     .sort((a, b) => Number(a.number) - Number(b.number))
 
 const stops = []
@@ -97,12 +125,12 @@ const stopId = (name) => {
     }
     return stopIds.get(name)
 }
-stopId(CITY)
 
 const lines = records.map((r, i) => ({
     id: i + 1,
     number: r.number,
-    name: `${r.places[0]} - ${r.places[r.places.length - 1]}`,
+    // circular lines end where they start, so name them after the furthest other place
+    name: `${r.places[0]} - ${r.places.findLast(p => p !== r.places[0])}`,
     color: COLORS[i % COLORS.length],
     stops: [...new Set(r.places.map(stopId))],
     timetable: r.timetable,

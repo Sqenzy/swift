@@ -19,7 +19,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 `src/data/busLines.js` and `src/data/busStops.js` are generated from the
 [Autobusové linky VDKHK](https://www.datakhk.cz/datasets/ebc0da36c2bd4fdb9505ddab8b789007_7/)
-CSV export (saved in `data-src/`). Only lines serving Hradec Králové are kept.
+CSV export (saved in `data-src/`), the regional bus lines of the Hradec Králové Region.
 To regenerate after downloading a newer export:
 
 ```sh
