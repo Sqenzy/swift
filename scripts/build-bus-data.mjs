@@ -71,7 +71,7 @@ const lines = source.lines
         const { from, to } = lineEnds(line, routes)
         return {
             id: i + 1,
-            number: line.lineNumber,
+            number: String(i + 1),
             name: to ? `${from} - ${to}` : from,
             from,
             to,

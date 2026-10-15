@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import './Home.css'
 import BusMap from "./Map.jsx"
 import { busStops } from './data/busStops.js'
+import { busLines } from './data/busLines.js'
 
 export default function Home() {
 
@@ -34,6 +35,18 @@ export default function Home() {
     const filteredToStops = busStops.filter(stop =>
         normalizeText(stop.name).includes(normalizeText(searchTo))
     )
+
+    const filteredFromLines = busLines.filter(line =>
+        normalizeText(`${line.number} ${line.name}`).includes(normalizeText(searchFrom))
+    )
+
+    const filteredToLines = busLines.filter(line =>
+        normalizeText(`${line.number} ${line.name}`).includes(normalizeText(searchTo))
+    )
+
+    const visibleLines = lineFilter === 'favorites'
+        ? busLines.filter(line => favorites.includes(line.id))
+        : busLines
 
 
     const [theme, setTheme] = useState(() => {
@@ -120,6 +133,7 @@ export default function Home() {
                             open={showToResults}
                             setOpen={setShowToResults}
                             stops={filteredToStops}
+                            lines={filteredToLines}
                             onPickLine={setSelectedLine}
                         />
                     </div>
