@@ -490,7 +490,7 @@
     padding: 0 6px;
     border-radius: 6px;
     background: var(--line-color);
-    color: white;
+    color: var(--line-text-color, white);
     font-size: 12px;
     font-weight: 700;
 }
@@ -613,7 +613,7 @@
     padding: 0 6px;
     border-radius: 10px;
     background: var(--line-color);
-    color: white;
+    color: var(--line-text-color, white);
     font-size: 15px;
     font-weight: 700;
     font-variant-numeric: tabular-nums;

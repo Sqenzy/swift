@@ -16,9 +16,20 @@ const EXCLUDED_LINES = new Set(['Přejezd', '999999', '908', '999'])
 const DEPOT = '# vozovny #'
 
 const COLORS = [
-    '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#ec4899', '#84cc16',
-    '#6366f1', '#14b8a6', '#f97316', '#a855f7', '#22c55e', '#eab308', '#0ea5e9',
+    '#ff595e', // vibrant coral
+    '#ffca3a', // golden pollen
+    '#8ac926', // yellow green
+    '#1982c4', // steel blue
+    '#6a4c93', // dusty grape
 ]
+
+// Dark text on light line colours, white on dark ones
+function textColor(hex) {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
+        .map(c => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return luminance > 0.4 ? '#1f1f1f' : '#ffffff'
+}
 
 const cleanStop = (name) => name.replace(/\s+/g, ' ').trim()
 const isStop = (name) => name !== '' && name !== DEPOT
@@ -76,6 +87,7 @@ const lines = source.lines
             from,
             to,
             color: COLORS[i % COLORS.length],
+            textColor: textColor(COLORS[i % COLORS.length]),
             stops: [...new Set(ends.map(stopId))],
             routes,
         }
@@ -89,7 +101,7 @@ const routeJs = (r) =>
 
 writeFileSync(new URL('src/data/busLines.js', root), header + 'export const busLines = [\n' + lines.map(l =>
     `    {\n` +
-    `        id: ${l.id}, number: ${q(l.number)}, name: ${q(l.name)}, color: ${q(l.color)},\n` +
+    `        id: ${l.id}, number: ${q(l.number)}, name: ${q(l.name)}, color: ${q(l.color)}, textColor: ${q(l.textColor)},\n` +
     `        from: ${q(l.from)}, to: ${q(l.to)}, stops: [${l.stops.join(', ')}],\n` +
     `        routes: [\n${l.routes.map(r => `            ${routeJs(r)},`).join('\n')}\n        ],\n` +
     `    },`

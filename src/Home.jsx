@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import './Home.css'
 import BusMap from "./Map.jsx"
+import { busLines } from './data/busLines.js'
 import { busStops } from './data/busStops.js'
 
 export default function Home() {
@@ -35,6 +36,19 @@ export default function Home() {
         normalizeText(stop.name).includes(normalizeText(searchTo))
     )
 
+    const filteredFromLines = busLines.filter(line =>
+        line.stops.some(stopId => {
+            const stop = busStops.find(s => s.id === stopId)
+            return stop && normalizeText(stop.name).includes(normalizeText(searchFrom))
+        })
+    )
+
+    const filteredToLines = busLines.filter(line =>
+        line.stops.some(stopId => {
+            const stop = busStops.find(s => s.id === stopId)
+            return stop && normalizeText(stop.name).includes(normalizeText(searchTo))
+        })
+    )
 
     const [theme, setTheme] = useState(() => {
         const saved = localStorage.getItem('theme')
@@ -72,6 +86,18 @@ export default function Home() {
                 : [...prev, lineId]
         )
     }
+
+    const sortedBusLines = [...busLines].sort((a, b) => {
+        const aFav = favorites.includes(a.id)
+        const bFav = favorites.includes(b.id)
+        if (aFav && !bFav) return -1
+        if (!aFav && bFav) return 1
+        return a.id - b.id
+    })
+
+    const visibleLines = lineFilter === 'favorites'
+        ? sortedBusLines.filter(line => favorites.includes(line.id))
+        : sortedBusLines
 
     const unlockedCount = buses.filter(bus => bus.unlocked).length
 
@@ -120,6 +146,7 @@ export default function Home() {
                             open={showToResults}
                             setOpen={setShowToResults}
                             stops={filteredToStops}
+                            lines={filteredToLines}
                             onPickLine={setSelectedLine}
                         />
                     </div>
@@ -166,7 +193,7 @@ export default function Home() {
                                     <li
                                         key={line.id}
                                         className={`line ${selectedLine === line.id ? 'active' : ''}`}
-                                        style={{ '--line-color': line.color }}
+                                        style={{ '--line-color': line.color, '--line-text-color': line.textColor }}
                                     >
                                         <button className="line-select" onClick={() => setSelectedLine(line.id)}>
                                             <span className="line-badge">{line.number}</span>
@@ -303,7 +330,7 @@ function StopSearch({ placeholder, value, onChange, open, setOpen, stops, lines,
                                         pick(line.name)
                                         onPickLine(line.id)
                                     }}
-                                    style={{ '--line-color': line.color }}
+                                    style={{ '--line-color': line.color, '--line-text-color': line.textColor }}
                                 >
                                     <span className="result-line-number">{line.number}</span>
                                     <span className="result-line-name">{line.name}</span>
