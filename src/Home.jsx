@@ -1,14 +1,18 @@
 import {useState, useEffect} from 'react'
 import './Home.css'
 import BusMap from "./Map.jsx"
+import { busLines } from './data/busLines.js'
 import { busStops } from './data/busStops.js'
+import { busLines } from './data/busLines.js'
 
+// Line colour palette; lines cycle through it in order. `text` is the colour of
+// the line number on top of it (dark on the light colours so it stays readable).
 const LINE_COLORS = [
-    { color: '#ff595e', text: '#ffffff' },
-    { color: '#ffca3a', text: '#1f1f1f' },
-    { color: '#8ac926', text: '#1f1f1f' },
-    { color: '#1982c4', text: '#ffffff' },
-    { color: '#6a4c93', text: '#ffffff' },
+    { color: '#ff595e', text: '#ffffff' }, // vibrant coral
+    { color: '#ffca3a', text: '#1f1f1f' }, // golden pollen
+    { color: '#8ac926', text: '#1f1f1f' }, // yellow green
+    { color: '#1982c4', text: '#ffffff' }, // steel blue
+    { color: '#6a4c93', text: '#ffffff' }, // dusty grape
 ]
 
 const lineColorStyle = (line) => {
