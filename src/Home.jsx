@@ -25,6 +25,7 @@ export default function Home() {
     const [searchTo, setSearchTo] = useState('')
     const [showFromResults, setShowFromResults] = useState(false)
     const [showToResults, setShowToResults] = useState(false)
+    const [lineFilter, setLineFilter] = useState('all')
 
     const normalizeText = (text) => {
         return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
@@ -106,196 +107,133 @@ export default function Home() {
         return a.id - b.id
     })
 
+    const visibleLines = lineFilter === 'favorites'
+        ? sortedBusLines.filter(line => favorites.includes(line.id))
+        : sortedBusLines
+
+    const unlockedCount = buses.filter(bus => bus.unlocked).length
+
+    const swapSearch = () => {
+        setSearchFrom(searchTo)
+        setSearchTo(searchFrom)
+        setShowFromResults(false)
+        setShowToResults(false)
+    }
+
     return (
         <>
-            <header className="header">
-                <div className="title">
-                    <p className="name">Trasa</p>
-                </div>
-                <div className="selection">
-                    <button className="del" onClick={() => setValueFrom('')}><img src="close.png"></img></button>
-                    <div className="select-wrapper">
-                        <div className="select-current">{valueFrom || "Vyberte zastavku"}</div>
-                        <div className="select-options">
-                            <button onClick={() => setValueFrom('Hlavni Nadrazi')}>Hlavni Nadrazi</button>
-                            <button onClick={() => setValueFrom('Polabiny')}>Polabiny</button>
-                            <button onClick={() => setValueFrom('Pardubicky')}>Pardubicky</button>
-                        </div>
-                    </div>
-                    <div className="separator">
-                        <div className={valueFrom ? "dot filled" : "dot"} id="dot1"></div>
-                        <div className={middleFilled ? "dot filled pulse" : "dot"} id="dot2"></div>
-                        <div className={valueTo ? "dot filled" : "dot"} id="dot3"></div>
-                    </div>
-                    <div className="select-wrapper">
-                        <div className="select-current">{valueTo || "Vyberte zastavku"}</div>
-                        <div className="select-options">
-                            <button onClick={() => setValueTo('Hlavni Nadrazi')}>Hlavni Nadrazi</button>
-                            <button onClick={() => setValueTo('Polabiny')}>Polabiny</button>
-                            <button onClick={() => setValueTo('Pardubicky')}>Pardubicky</button>
-                        </div>
-                    </div>
-                    <button className="del" id="second" onClick={() => setValueTo('')}><img src="close.png"></img></button>
-                </div>
-            </header>
             <section className="sidebar">
                 <div className="sidebar-header">
-                    <p className="name">Linky</p>
+                    <div className="sidebar-brand">
+                        <p className="name">Linky</p>
+                    </div>
+                    <button className="changemode"
+                            onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
+                            aria-label="Toggle dark/light mode">
+                        <img src="mode.png" alt=""/>
+                    </button>
                 </div>
+
                 <div className="search-section">
-                    <div className="search-container">
-                        <input
-                            type="text"
-                            className="search-input"
+                    <div className="route-track" aria-hidden="true">
+                        <span className="route-point start"></span>
+                        <span className="route-rail"></span>
+                        <span className="route-point end"></span>
+                    </div>
+                    <div className="search-fields">
+                        <StopSearch
                             placeholder="Odkud"
                             value={searchFrom}
-                            onChange={(e) => {
-                                setSearchFrom(e.target.value)
-                                setShowFromResults(true)
-                            }}
-                            onFocus={() => setShowFromResults(true)}
+                            onChange={setSearchFrom}
+                            open={showFromResults}
+                            setOpen={setShowFromResults}
+                            stops={filteredFromStops}
+                            lines={filteredFromLines}
+                            onPickLine={setSelectedLine}
                         />
-                        {showFromResults && searchFrom && (filteredFromStops.length > 0 || filteredFromLines.length > 0) && (
-                            <div className="search-results">
-                                {filteredFromStops.length > 0 && (
-                                    <div className="search-result-section">
-                                        <div className="search-result-section-title">Zastávky</div>
-                                        {filteredFromStops.map(stop => (
-                                            <div
-                                                key={stop.id}
-                                                className="search-result-item"
-                                                onClick={() => {
-                                                    setSearchFrom(stop.name)
-                                                    setShowFromResults(false)
-                                                }}
-                                            >
-                                                {stop.name}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                                {filteredFromLines.length > 0 && (
-                                    <div className="search-result-section">
-                                        <div className="search-result-section-title">Linky</div>
-                                        {filteredFromLines.map(line => (
-                                            <div
-                                                key={line.id}
-                                                className="search-result-item line-result"
-                                                onClick={() => {
-                                                    setSearchFrom(line.name)
-                                                    setShowFromResults(false)
-                                                }}
-                                                style={{ '--line-color': line.color }}
-                                            >
-                                                <span className="result-line-number">{line.number}</span>
-                                                <span className="result-line-name">{line.name}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        )}
-                    </div>
-                    <div className="search-container">
-                        <input
-                            type="text"
-                            className="search-input"
+                        <StopSearch
                             placeholder="Kam"
                             value={searchTo}
-                            onChange={(e) => {
-                                setSearchTo(e.target.value)
-                                setShowToResults(true)
-                            }}
-                            onFocus={() => setShowToResults(true)}
+                            onChange={setSearchTo}
+                            open={showToResults}
+                            setOpen={setShowToResults}
+                            stops={filteredToStops}
+                            lines={filteredToLines}
+                            onPickLine={setSelectedLine}
                         />
-                        {showToResults && searchTo && (filteredToStops.length > 0 || filteredToLines.length > 0) && (
-                            <div className="search-results">
-                                {filteredToStops.length > 0 && (
-                                    <div className="search-result-section">
-                                        <div className="search-result-section-title">Zastávky</div>
-                                        {filteredToStops.map(stop => (
-                                            <div
-                                                key={stop.id}
-                                                className="search-result-item"
-                                                onClick={() => {
-                                                    setSearchTo(stop.name)
-                                                    setShowToResults(false)
-                                                }}
-                                            >
-                                                {stop.name}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                                {filteredToLines.length > 0 && (
-                                    <div className="search-result-section">
-                                        <div className="search-result-section-title">Linky</div>
-                                        {filteredToLines.map(line => (
-                                            <div
-                                                key={line.id}
-                                                className="search-result-item line-result"
-                                                onClick={() => {
-                                                    setSearchTo(line.name)
-                                                    setShowToResults(false)
-                                                }}
-                                                style={{ '--line-color': line.color }}
-                                            >
-                                                <span className="result-line-number">{line.number}</span>
-                                                <span className="result-line-name">{line.name}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        )}
                     </div>
+                    <button className="swap-btn" onClick={swapSearch} aria-label="Prohodit Odkud a Kam" title="Prohodit">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4"/>
+                        </svg>
+                    </button>
                 </div>
+
+                <div className="line-tabs" role="tablist">
+                    <button
+                        role="tab"
+                        aria-selected={lineFilter === 'all'}
+                        className={`line-tab ${lineFilter === 'all' ? 'active' : ''}`}
+                        onClick={() => setLineFilter('all')}
+                    >
+                        Vše <span className="tab-count"></span>
+                    </button>
+                    <button
+                        role="tab"
+                        aria-selected={lineFilter === 'favorites'}
+                        className={`line-tab ${lineFilter === 'favorites' ? 'active' : ''}`}
+                        onClick={() => setLineFilter('favorites')}
+                    >
+                        Oblíbené <span className="tab-count"></span>
+                    </button>
+                </div>
+
                 <div className="content">
-                    <div className="lines">
-                        {sortedBusLines.map(line => (
-                            <button
-                                key={line.id}
-                                className={`line ${selectedLine === line.id ? 'active' : ''}`}
-                                onClick={() => setSelectedLine(line.id)}
-                                style={{ '--line-color': line.color }}
-                            >
-                                <div className="line-info">
-                                    <div className="line-logo-box">
-                                        <img src="buslogo.png" alt="bus" className="line-logo" />
-                                        <span className="line-number">{line.number}</span>
-                                    </div>
-                                </div>
-                                <span className="line-name">{line.name}</span>
-                                <button
-                                    className={`favorite-btn ${favorites.includes(line.id) ? 'favorited' : ''}`}
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                        toggleFavorite(line.id)
-                                    }}
-                                >
-                                    {favorites.includes(line.id) ? '★' : '☆'}
-                                </button>
-                            </button>
-                        ))}
-                    </div>
+                    {visibleLines.length === 0 ? (
+                        <div className="lines-empty">
+                            <span className="lines-empty-icon">☆</span>
+                            <p>Zatím žádné oblíbené linky.</p>
+                            <p className="lines-empty-hint">Přidejte linku hvězdičkou v seznamu.</p>
+                        </div>
+                    ) : (
+                        <ul className="lines">
+                            {visibleLines.map(line => {
+                                const [origin, destination] = line.name.split(' - ')
+                                const isFavorite = favorites.includes(line.id)
+                                return (
+                                    <li
+                                        key={line.id}
+                                        className={`line ${selectedLine === line.id ? 'active' : ''}`}
+                                        style={{ '--line-color': line.color }}
+                                    >
+                                        <button className="line-select" onClick={() => setSelectedLine(line.id)}>
+                                            <span className="line-badge">{line.number}</span>
+                                            <span className="line-text">
+                                                <span className="line-origin">{origin}</span>
+                                                {destination && <span className="line-destination">{destination}</span>}
+                                            </span>
+                                        </button>
+                                        <button
+                                            className={`favorite-btn ${isFavorite ? 'favorited' : ''}`}
+                                            onClick={() => toggleFavorite(line.id)}
+                                            aria-label={isFavorite ? 'Odebrat z oblíbených' : 'Přidat do oblíbených'}
+                                            aria-pressed={isFavorite}
+                                        >
+                                            {isFavorite ? '★' : '☆'}
+                                        </button>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    )}
                 </div>
+
                 <div className="colection">
-                    <div className="banner" onClick={() => setShowCollectionMenu(!showCollectionMenu)}>
-                        <div className="logo-div">
-                            <div className="logo-box">
-                                <img src="buslogo.png" alt="buslogo" />
-                            </div>
-                        </div>
-                        <div className="info">
-                            <h3>Kolekce</h3>
-                            <h6>Sbírka nalezených autobusů</h6>
-                        </div>
-                    </div>
                     {showCollectionMenu && (
                         <div className="collection-menu">
                             <div className="collection-menu-header">
                                 <h4>Vaše kolekce</h4>
-                                <button className="close-menu" onClick={() => setShowCollectionMenu(false)}>✕</button>
+                                <button className="close-menu" onClick={() => setShowCollectionMenu(false)} aria-label="Zavřít">✕</button>
                             </div>
                             <div className="collection-menu-content">
                                 {buses.length === 0 ? (
@@ -325,12 +263,22 @@ export default function Home() {
                             </div>
                         </div>
                     )}
-                </div>
-                <div className="footer">
-                    <button className="changemode"
-                            onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
-                            aria-label="Toggle dark/light mode">
-                        <img src="mode.png"/>
+                    <button
+                        className={`banner ${showCollectionMenu ? 'open' : ''}`}
+                        onClick={() => setShowCollectionMenu(!showCollectionMenu)}
+                        aria-expanded={showCollectionMenu}
+                    >
+                        <span className="logo-box">
+                            <img src="buslogo.png" alt="" />
+                        </span>
+                        <span className="info">
+                            <span className="info-title">Kolekce</span>
+                            <span className="info-sub">{unlockedCount} / {buses.length} nalezených autobusů</span>
+                            <span className="collection-progress">
+                                <span style={{ width: `${(unlockedCount / buses.length) * 100}%` }}></span>
+                            </span>
+                        </span>
+                        <span className="banner-chevron" aria-hidden="true">›</span>
                     </button>
                 </div>
             </section>
@@ -340,4 +288,69 @@ export default function Home() {
             </section>
         </>
         )
+}
+
+function StopSearch({ placeholder, value, onChange, open, setOpen, stops, lines, onPickLine }) {
+    const pick = (text) => {
+        onChange(text)
+        setOpen(false)
+    }
+
+    return (
+        <div className="search-container">
+            <div className="search-field">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={(e) => {
+                        onChange(e.target.value)
+                        setOpen(true)
+                    }}
+                    onFocus={() => setOpen(true)}
+                />
+                {value && (
+                    <button className="search-clear" onClick={() => onChange('')} aria-label="Vymazat">✕</button>
+                )}
+            </div>
+            {open && value && (stops.length > 0 || lines.length > 0) && (
+                <div className="search-results">
+                    {stops.length > 0 && (
+                        <div className="search-result-section">
+                            <div className="search-result-section-title">Zastávky</div>
+                            {stops.map(stop => (
+                                <div
+                                    key={stop.id}
+                                    className="search-result-item"
+                                    onClick={() => pick(stop.name)}
+                                >
+                                    {stop.name}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {lines.length > 0 && (
+                        <div className="search-result-section">
+                            <div className="search-result-section-title">Linky</div>
+                            {lines.map(line => (
+                                <div
+                                    key={line.id}
+                                    className="search-result-item line-result"
+                                    onClick={() => {
+                                        pick(line.name)
+                                        onPickLine(line.id)
+                                    }}
+                                    style={{ '--line-color': line.color }}
+                                >
+                                    <span className="result-line-number">{line.number}</span>
+                                    <span className="result-line-name">{line.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    )
 }
