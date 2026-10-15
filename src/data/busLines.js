@@ -1,0 +1,17 @@
+export const busLines = [
+    { id: 1, number: '1', name: 'Hlavní nádraží - Polabiny', color: '#3b82f6', stops: [1, 16, 21, 20, 15, 3] },
+    { id: 2, number: '2', name: 'Pardubice - Rosice', color: '#8b5cf6', stops: [4, 15, 21, 22, 23, 6] },
+    { id: 3, number: '3', name: 'Náměstí - Dašice', color: '#10b981', stops: [2, 16, 15, 21, 22, 23, 24, 7] },
+    { id: 4, number: '4', name: 'Družba - Sezemice', color: '#f59e0b', stops: [5, 20, 15, 21, 2, 8] },
+    { id: 5, number: '5', name: 'Hlavní nádraží - Lázně Bohdaneč', color: '#ef4444', stops: [1, 16, 21, 22, 23, 24, 25, 9] },
+    { id: 6, number: '6', name: 'Polabiny - Srnojedky', color: '#06b6d4', stops: [3, 22, 21, 15, 20, 5, 10] },
+    { id: 7, number: '7', name: 'Pardubice - Přelouč', color: '#ec4899', stops: [4, 15, 21, 22, 23, 24, 25, 11] },
+    { id: 8, number: '8', name: 'Náměstí - Holice', color: '#84cc16', stops: [2, 16, 21, 20, 5, 10, 12] },
+    { id: 9, number: '9', name: 'Družba - Chrudim', color: '#6366f1', stops: [5, 20, 15, 21, 22, 6, 13] },
+    { id: 10, number: '10', name: 'Hlavní nádraží - Hradec Králové', color: '#14b8a6', stops: [1, 16, 21, 20, 5, 10, 14] },
+    { id: 11, number: '11', name: 'Polabiny - Dašice', color: '#f97316', stops: [3, 22, 23, 24, 7] },
+    { id: 12, number: '12', name: 'Pardubice - Sezemice', color: '#a855f7', stops: [4, 15, 21, 2, 8] },
+    { id: 13, number: '13', name: 'Náměstí - Lázně Bohdaneč', color: '#22c55e', stops: [2, 16, 21, 22, 23, 24, 25, 9] },
+    { id: 14, number: '14', name: 'Družba - Přelouč', color: '#eab308', stops: [5, 20, 15, 21, 22, 23, 24, 25, 11] },
+    { id: 15, number: '15', name: 'Hlavní nádraží - Srnojedky', color: '#0ea5e9', stops: [1, 16, 21, 20, 5, 10] },
+]
