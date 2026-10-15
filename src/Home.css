@@ -481,6 +481,7 @@
     background: color-mix(in srgb, var(--line-color) 14%, transparent);
 }
 .result-line-number{
+    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
